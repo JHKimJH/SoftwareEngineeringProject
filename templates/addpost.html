@@ -1,0 +1,70 @@
+<html>
+    <body style = "background-color: #DCD6DA;">
+        <head>
+            <style>
+            div.textbox{
+                position: relative;
+                width: 750px;
+                height: 750px;
+                margin-top: 100;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 20;
+                background-image: url('/static/images/notebackground2.jpg'); background-size: 750px 750px;
+            }
+            div.imagebox{
+                overflow: hidden;
+                position: static;
+		        height: auto;
+                margin-left: 30%;
+                margin-right: 30%;
+                margin-bottom: 10px;
+                border: 1px solid;
+            }
+            div.imagewrapper{
+                overflow: hidden;
+                position: relative;
+		        height: auto;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 10px;
+                padding-left: 100;
+                padding-right: 100;
+            }
+            </style>
+        </head>
+            <div>
+                <button style = "background-color: #CED7DE;  cursor: pointer; border: 2px solid white; position:absolute; top:5; right:5;"><a href = "/user/logout">click here to logout</a></button>
+            </div>
+
+            <form action = '/user/savepost' method = "POST" form autocomplete = "off">
+            <div  style = "position:absolute; left:50%; margin-left: -350px; margin-top: -30px;">
+                <label>Title : <input type="text" name="title"/></label>
+            </div>
+            <div  style = "position:absolute; left:50%; margin-left: 150px; margin-top: -30px;">
+                <button type = "submit" name="title" style = "background-color: #CED7DE;  cursor: pointer; border: 2px solid white; "/>Save Post</button>
+            </div>
+            <div  style = "position:absolute; left:50%; margin-left: 240px; margin-top: -30px;">
+                <button type = "button" name="title" style = "background-color: #CED7DE;  cursor: pointer; border: 2px solid white; "onClick="location.href='/user/homepage'"/>Go Back to List</button>
+            </div>
+
+
+            <div class = 'textbox'>
+                <h2 style = "position:absolute; top: -90; left: 0;">New Post</h2>
+                <center><textarea  name = 'content' cols="97" rows="46" style = "position: relative; margin-top: 8%; width: 680px; height: 660px; background-color: transparent; border:none;"> </textarea></center><br>
+
+                <input type="text" id = "demo" style = "position: absolute; left: 80%; top: 102%; margin: 0 0 20 0; display:none; " name = 'filename'/>
+            </div>
+            <div class="imagewrapper">
+                <div id="image-show" class = 'imagebox'>
+
+                </div>
+                <div>
+                    <input style = "background-color: #CED7DE;  cursor: pointer; border: 2px solid white; position: relative; left: 30%; top: 0%; margin: 0 0 20 0; display:none;" type="file" accept="img/*" id = 'loadfile' multiple onchange="loadFile(this);">                
+                    <button style = "background-color: #CED7DE;  cursor: pointer; border: 2px solid white; position: relative; left: 57%; top: -102%; margin: 0 0 20 0;" type="button" id = 'submitButton' onClick = "document.getElementById('loadfile').click();">Upload picture</button> 
+                </div>
+            </div>
+            </form>
+        <script type="text/javascript" src="{{url_for('static', filename = 'picture.js')}}"></script>
+    </body>
+</html>

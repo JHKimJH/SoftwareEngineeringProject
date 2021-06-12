@@ -1,0 +1,54 @@
+<html>
+    <body style = "background-color: #DCD6DA;">
+        <head>
+            <style>
+            div.listboxwrapper{
+                position: relative;
+                background-image: url('/static/images/listbackground.jpg');
+                background-size: 700px 700px;
+                width: 700px;
+                height: 700px;
+                margin-top: 40;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            div.listbox{
+                position: relative;
+                background-color:transparent;
+                width: 700px;
+                height: 650px;
+                margin: 50 auto;
+                padding-top:27;
+            }
+            </style>
+        </head>
+        <div>
+            <center>you are logged in</br></center>
+        </div>
+
+        <div>
+            <button style = "background-color: #CED7DE;  cursor: pointer; border: 2px solid white; position:absolute; top:5; right:5;"><a href = "/user/logout">click here to logout</a></button>
+        </div>
+        <div  style = "position:absolute; left:50%; margin-left: 240px; margin-top: 10px;">
+            <button type = "button" name="title" onClick="location.href='/user/homepage'" style = "background-color: #CED7DE;  cursor: pointer; border: 2px solid white;"/>Go Back to List</button>
+        </div>
+
+        <form action = '/user/homepage' method = "POST" form autocomplete="off">
+
+        <div class = "listboxwrapper">
+            <div class = 'listbox'>
+                <table style = "width:700px; border: 1px solid; border-collapse: collapse;">
+                    {% for key, value in result.items() %}
+                        {% if key != "" %}
+                            <tr style = "border: 1px solid;">
+                                <td><input type="checkbox" name="chk" value= "{{key}}" />{{key}}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+            <button type = "submit" style = "position: absolute; left: 92%; top: 102%;  margin: 0 auto; background-color: #CED7DE;  cursor: pointer; border: 2px solid white;">Delete</button>
+        </div>
+        </form>
+    </body>
+</html>

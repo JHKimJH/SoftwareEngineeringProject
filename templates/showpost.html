@@ -1,0 +1,61 @@
+<html>
+    <body style = "background-color: #DCD6DA; justify-content: center; align-item: center;">
+        <head>
+            <style>
+            div.textbox{
+                position: relative;
+                width: 750px;
+                height: 750px;
+                margin-top: 100;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 20;
+                background-image: url('/static/images/notebackground2.jpg'); background-size: 750px 750px;
+            }
+            div.imagebox{
+                overflow: hidden;
+                position: static;
+		        height: auto;
+                margin-left: 30%;
+                margin-right: 30%;
+                margin-bottom: 10px;
+                border: 1px solid;
+            }
+            div.imagewrapper{
+                overflow: hidden;
+                position: relative;
+		        height: auto;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 10px;
+                padding-left: 100;
+                padding-right: 100;
+            }
+            </style>
+        </head>
+        <div>
+            <button style = "background-color: #CED7DE;  cursor: pointer; border: 2px solid white; position:absolute; top:5; right:5;"><a href = "/user/logout">click here to logout</a></button>
+        </div>
+        <div  style = "position:absolute; left:50%; margin-left: 240px; margin-top: -30px;">
+            <button type = "button" name="title" onClick="location.href='/user/homepage'" style = "background-color: #CED7DE;  cursor: pointer; border: 2px solid white; "/>Go Back to List</button>
+        </div>
+        <div style = "position:absolute; left:50%; margin-left: 160px; margin-top: -30px;">
+            <button style = "background-color: #CED7DE;  cursor: pointer; border: 2px solid white; "><a href = {{ url_for('editpost', titlename = name) }}>Edit post</a></button>
+        </div>
+
+        <div  style = "position:absolute; left:50%; margin-left: -350px; margin-top: -40px;">
+            <b><label style = "font-size: 200%">Title : </label>{{name}}</b></br>
+        </div>
+
+        <div class = 'textbox'>
+            <center><textarea  name = 'content' cols="97" rows="46" style = "position: relative; margin-top: 8%; width: 680px; height: 660px; background-color: transparent; border:none;" disabled>{{value[0]}}</textarea></center><br>
+
+        </div>
+        <div class = 'imagewrapper'>
+            <div id="image-show" class = 'imagebox' stlye = "text-align: center;">
+                <input type="text" id = "demo" style = "position: absolute; left: 80%; top: 102%; margin: 0 0 20 0; visibility:hidden; " name = 'filename' value = {{value[1]}} />
+            </div>
+        </div>
+        <script type="text/javascript" src="{{url_for('static', filename = 'pictureshow.js')}}"></script>
+    </body>
+</html>

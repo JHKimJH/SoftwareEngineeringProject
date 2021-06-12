@@ -1,0 +1,49 @@
+<html>
+    <body style = "background-color: #DCD6DA;">
+        <head>
+            <style>
+            div.listboxwrapper{
+                position: relative;
+                background-image: url('/static/images/listbackground.jpg');
+                background-size: 700px 700px;
+                width: 700px;
+                height: 700px;
+                margin-top: 40;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            div.listbox{
+                position: relative;
+                background-color:transparent;
+                width: 700px;
+                height: 650px;
+                margin: 50 auto;
+                padding-top:27;
+            }
+            </style>
+        </head>
+        <div>
+            <center>you are logged in</br></center>
+        </div>
+
+        <div>
+            <button style = "position:absolute; top:5; right:5; background-color: #CED7DE;  cursor: pointer; border: 2px solid white;"><a href = "/user/logout">click here to logout</a></button>
+        </div>
+
+        <div class = "listboxwrapper">
+            <div class = 'listbox'>
+                <table style = "width:700px; border: 1px solid ; border-collapse: collapse;">
+                    {% for key, value in result.items() %}
+                        {% if key != "" %}
+                            <tr style = "border: 1px solid;">
+                                <td><a href = {{ url_for('showpost', titlename = key) }}>{{key}}</a></td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+            <button style = "background-color: #CED7DE;  cursor: pointer; border: 2px solid white; position: absolute; left: 77%; top: 102%; margin: 0 auto;"><a href = "/user/addpost">Add post</a></button>
+            <button style = "background-color: #CED7DE;  cursor: pointer; border: 2px solid white; position: absolute; left: 88%; top: 102%; margin: 0 auto;"><a href = "/user/choosedelete">Delete post</a></button>
+        </div>
+    </body>
+</html>

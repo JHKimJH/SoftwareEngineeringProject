@@ -1,0 +1,17 @@
+CREATE DATABASE diary CHARACTER SET UTF8;
+ 
+use diary;
+
+CREATE TABLE user(
+    ID     VARCHAR(256)NOT NULL PRIMARY KEY,
+    pwd    VARCHAR(256)NOT NULL
+) CHARSET=utf8;
+
+
+CREATE TABLE diary(
+    ID VARCHAR(256)NOT NULL,
+    title     VARCHAR(256)NOT NULL,
+    content    VARCHAR(256)NOT NULL,
+    filepath    VARCHAR(256),
+    FOREIGN KEY(ID) REFERENCES user(ID)
+) CHARSET=utf8;
