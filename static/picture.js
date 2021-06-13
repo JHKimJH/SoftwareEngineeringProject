@@ -10,7 +10,7 @@
 
 function loadFile(input) {
     if (document.getElementsByClassName('img').length > 0){
-        for (var i = 0; i < document.getElementsByClassName('img').length + 1; i ++){
+        while(document.getElementsByClassName('img').length>0){
             var oldImage = document.getElementById('image-show').lastElementChild;
             //oldImage.style.visibility = "hidden";
             //document.getElementById('image-show').removeChild(oldImage);

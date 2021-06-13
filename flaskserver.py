@@ -16,8 +16,11 @@ def userindex():
     db_class.execute(sql)
     results = db_class.cursor.fetchall()
     #db_class.commit()
+    print(dict)
     for i in results:
         user[i['ID']] = i['pwd']
+    
+    print(user)
     if 'username' in session:
         return redirect(url_for("homepage"))
     return render_template("welcome.html")
@@ -25,6 +28,7 @@ def userindex():
 @app.route("/user/login", methods = ["POST", "GET"])
 def login():
     if request.method == "POST":
+        print(request.form['username'])
         if (request.form['username'] in user.keys() and request.form['password'] == user[request.form['username']]):
             session['username'] = request.form['username']
             return redirect(url_for("userindex"))
@@ -53,6 +57,9 @@ def register():
 @app.route("/user/logout")
 def logout():
     session.pop('username', None)
+    dict.clear()
+    user.clear()
+    lst.clear()
     return redirect(url_for("userindex"))
 
 @app.route("/user/homepage", methods = ["POST", "GET"])
@@ -71,6 +78,7 @@ def homepage():
                 db_class.commit()
 
     sql = "SELECT title, content, filepath FROM diary WHERE ID = %s"
+    print("SELECT title, content, filepath FROM diary WHERE ID = {}".format(session['username']))
     db_class.execute(sql, session['username'])
     results = db_class.cursor.fetchall()
     #db_class.commit()
@@ -94,6 +102,7 @@ def choosedelete():
 
 @app.route("/user/editpost/<titlename>")
 def editpost(titlename):
+    print(titlename, dict[titlename])
     return render_template("editpost.html", name = titlename, value = dict[titlename])
 
 @app.route("/user/showpost/<titlename>")
